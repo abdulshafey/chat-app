@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const connectToDB = require("./config/connectToDb");
+const router = require("./router/index");
 require("dotenv").config();
 
 const app = express();
@@ -10,6 +11,8 @@ app.use(
     credentials: true,
   })
 );
+app.use(express.json());
+app.use("/api", router);
 
 const PORT = process.env.PORT || 8080;
 

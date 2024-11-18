@@ -24,19 +24,20 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-UserModel.pre("save", async function (next) {
+
+userSchema.pre("save", async function (next) {
   let user = this;
   if (!user.isModified("password")) return next();
   user.password = await bcrypt.hash(user.password, 10);
   next();
 });
 
-UserModel.methods.isPasswordCorrect = async function (password) {
+userSchema.methods.isPasswordCorrect = async function (password) {
   let user = this;
   return await bcrypt.compare(password, user.password);
 };
 
-UserModel.methods.generateAccessToken = function () {
+userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {
       _id: this._id,
