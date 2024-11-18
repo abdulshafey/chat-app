@@ -11,12 +11,6 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
-  res.json({
-    message: "Hello from server",
-  });
-});
-
 const PORT = process.env.PORT || 8080;
 
 connectToDB().then(() => {
