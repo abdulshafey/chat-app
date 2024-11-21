@@ -17,15 +17,15 @@ const checkPassword = async (req, res) => {
       throw new ApiError(401, "Invalid user credentials");
     }
     const cookieOptions = {
-      http: true,
+      httpOnly: true,
       secure: true,
     };
     const token = user.generateAccessToken();
-    console.log("token is ", token);
+
     return res
       .cookie("token", token, cookieOptions)
       .status(200)
-      .json(new ApiResponse(200, user, "Login successfully ", token));
+      .json(new ApiResponse(200, "", "Login successfully ", token));
   } catch (error) {
     console.log("Error in checkPassword ", error);
     return sendErrorResponse(res, error);
