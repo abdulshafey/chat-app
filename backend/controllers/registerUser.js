@@ -1,6 +1,7 @@
 const UserModel = require("../models/userModel");
 const { ApiResponse } = require("../utils/ApiResponse");
 const { ApiError } = require("../utils/apiError");
+const { sendErrorResponse } = require("../utils/responseHelper");
 
 const registerUser = async (req, res) => {
   try {
@@ -29,10 +30,8 @@ const registerUser = async (req, res) => {
       .status(201)
       .json(new ApiResponse(200, createdUser, "User registered successfully"));
   } catch (error) {
-    return res.status(500).json({
-      error: true,
-      message: error.message || error,
-    });
+    console.log("Error in registerUser:", error); // Log the error for debugging
+    return sendErrorResponse(res, error);
   }
 };
 
