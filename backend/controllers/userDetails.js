@@ -1,14 +1,19 @@
 const { ApiResponse } = require("../utils/ApiResponse");
 const { ApiError } = require("../utils/apiError");
 const getUserDetailsFromToken = require("../utils/getUserDetailsFromToken");
+const { sendErrorResponse } = require("../utils/responseHelper");
 
 const userDetails = async (req, res) => {
-  const token = req?.cookies?.token || req.body;
-  const user = await getUserDetailsFromToken(token);
-  if (!user) {
-    throw new ApiError(400, "User not found !");
+  try {
+    const token = req?.cookies?.token || "";
+    const user = await getUserDetailsFromToken(token);
+    if (!user) {
+      throw new ApiError(404, "User not found !");
+    }
+    return res.status(200).json(new ApiResponse(200, user, "User details"));
+  } catch (error) {
+    return sendErrorResponse(res, error);
   }
-  return res.status(200).json(new ApiResponse(200, user, "User details"));
 };
 
 module.exports = userDetails;

@@ -8,9 +8,9 @@ const getUserDetailsFromToken = async (token) => {
       logout: true,
     };
   }
-  const decode = await jwt.verify(token, process.env.Access_Token_SecretKey);
+  const decode = jwt.verify(token, process.env.Access_Token_SecretKey);
   const user = await UserModel.findById(decode._id).select("-password");
-  console.log("User :   ", user);
+
   return user;
 };
 
