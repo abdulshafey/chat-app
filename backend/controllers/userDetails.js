@@ -1,5 +1,5 @@
+const { ApiError } = require("../utils/ApiError");
 const { ApiResponse } = require("../utils/ApiResponse");
-const { ApiError } = require("../utils/apiError");
 const getUserDetailsFromToken = require("../utils/getUserDetailsFromToken");
 const { sendErrorResponse } = require("../utils/responseHelper");
 
