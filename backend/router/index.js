@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post("/register", registerUser);
 router.post("/email", checkEmail);
-router.post("/login", checkPassword);
+router.post("/password", checkPassword);
 router.get("/user-details", userDetails);
 router.get("/logout", logout);
 router.patch("/update-user", updateUserDetails);
