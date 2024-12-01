@@ -3,6 +3,7 @@ import MessageSection from "../components/MessageSection";
 import AuthLayouts from "../layout";
 import CheckEmail from "../pages/CheckEmail";
 import CheckPassword from "../pages/CheckPassword";
+import ForgotPassword from "../pages/ForgotPassword";
 import Home from "../pages/Home";
 import RegisterPage from "../pages/RegisterPage";
 
@@ -34,6 +35,14 @@ const router = createBrowserRouter([
         element: (
           <AuthLayouts>
             <CheckPassword />
+          </AuthLayouts>
+        ),
+      },
+      {
+        path: "forgot-password",
+        element: (
+          <AuthLayouts>
+            <ForgotPassword />
           </AuthLayouts>
         ),
       },
