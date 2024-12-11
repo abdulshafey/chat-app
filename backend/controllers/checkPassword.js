@@ -1,5 +1,5 @@
 const UserModel = require("../models/userModel");
-const { ApiError } = require("../utils/ApiError");
+const { ApiError } = require("../utils/apiError");
 const { ApiResponse } = require("../utils/ApiResponse");
 const { sendErrorResponse } = require("../utils/responseHelper");
 
