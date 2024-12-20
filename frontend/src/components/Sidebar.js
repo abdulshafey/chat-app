@@ -6,7 +6,6 @@ import { BiLogOut } from "react-icons/bi";
 import Avatar from "./Avatar";
 import { useDispatch, useSelector } from "react-redux";
 import EditUserDetails from "./EditUserDetails";
-//mport Divider from "./Divider";
 import { FiArrowUpLeft } from "react-icons/fi";
 import SearchUser from "./SearchUser";
 import { FaImage } from "react-icons/fa6";
@@ -185,12 +184,12 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {/**edit user details*/}
+      {/**Edit user details*/}
       {editUserOpen && (
         <EditUserDetails onClose={() => setEditUserOpen(false)} user={user} />
       )}
 
-      {/**search user */}
+      {/**Search user */}
       {openSearchUser && (
         <SearchUser onClose={() => setOpenSearchUser(false)} />
       )}

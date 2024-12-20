@@ -33,7 +33,7 @@ const Home = () => {
         dispatch(logout());
         navigate("/email");
       }
-      console.log("current user Details", response);
+      //console.log("current user Details", response);
     } catch (error) {
       console.log("error", error);
     }
@@ -44,31 +44,20 @@ const Home = () => {
   }, []);
 
   /***socket connection */
-  // useEffect(()=>{
-  //   const socketConnection = io(process.env.REACT_APP_BACKEND_URL,{
-  //     auth : {
-  //       token : localStorage.getItem('token')
-  //     },
-  //   })
-
-  //   socketConnection.on('onlineUser',(data)=>{
-  //     console.log(data)
-  //     dispatch(setOnlineUser(data))
-  //   })
-
-  //   dispatch(setSocketConnection(socketConnection))
-
-  //   return ()=>{
-  //     socketConnection.disconnect()
-  //   }
-  // },[])
-
   useEffect(() => {
     const socketConnection = io(process.env.REACT_APP_BACKEND_URL, {
       auth: {
         token: localStorage.getItem("token"),
       },
     });
+
+    socketConnection.on("onlineUser", (data) => {
+      //console.log(data);
+      dispatch(setOnlineUser(data));
+    });
+
+    dispatch(setSocketConnection(socketConnection));
+
     return () => {
       socketConnection.disconnect();
     };
