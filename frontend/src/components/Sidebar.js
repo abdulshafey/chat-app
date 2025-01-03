@@ -28,7 +28,7 @@ const Sidebar = () => {
       socketConnection.emit("sidebar", user._id);
 
       socketConnection.on("conversation", (data) => {
-        console.log("conversation", data);
+       // console.log("conversation", data);
 
         const conversationUserData = data.map((conversationUser, index) => {
           if (
@@ -82,7 +82,7 @@ const Sidebar = () => {
             onClick={() => setOpenSearchUser(true)}
             className="w-12 h-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded"
           >
-            <FaUserPlus size={20} />
+        <FaUserPlus size={20} />
           </div>
         </div>
 
