@@ -13,6 +13,7 @@ app.use(
     credentials: true,
   })
 );
+app.options('*', cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api", router);
@@ -20,7 +21,7 @@ app.use("/api", router);
 const PORT = process.env.PORT || 8080;
 
 connectToDB().then(() => {
-  server.listen(PORT, () => {
+  server.listen(PORT || 8080, () => {
     console.log("MongoDb connected..");
     console.log(`Server is running on ${PORT}`);
   });
