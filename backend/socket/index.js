@@ -11,7 +11,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL,
+    origin: 'https://chat-kf1djyp5m-abdulshafeyazmis-projects.vercel.app' || process.env.FRONTEND_URL ,
     credentials: true,
   },
 });
