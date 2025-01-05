@@ -9,12 +9,24 @@ const getConversation = require("../utils/getConversation");
 const app = express();
 const server = http.createServer(app);
 
+const allowedOrigins = [
+  'http://localhost:3000', // Local frontend
+  'https://chat-app-coral-mu.vercel.app', // Deployed frontend
+];
+
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL ,
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   },
 });
+
 
 const onlineUser = new Set();
 io.on("connection", async (socket) => {

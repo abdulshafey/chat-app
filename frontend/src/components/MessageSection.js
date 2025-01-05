@@ -110,7 +110,7 @@ const MessageSection = () => {
       });
 
       socketConnection.on("message", (data) => {
-        console.log("Message data", data);
+        //console.log("Message data", data);
         setAllMessage(data);
       });
     }
