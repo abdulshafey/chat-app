@@ -10,8 +10,7 @@ const app = express();
 const server = http.createServer(app);
 
 const allowedOrigins = [
-  'http://localhost:3000', // Local frontend
-  'https://chat-app-coral-mu.vercel.app', // Deployed frontend
+  process.env.FRONTEND_URL, // Local frontend
 ];
 
 const io = new Server(server, {

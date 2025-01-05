@@ -8,8 +8,7 @@ const { app, server } = require("./socket/index");
 
 // const app = express();
 const allowedOrigins = [
-  'http://localhost:3000', // For local development
-  'https://chat-app-coral-mu.vercel.app', // Your Vercel frontend
+  process.env.FRONTEND_URL, // For local development
 ];
 
 // CORS middleware with dynamic origin matching
