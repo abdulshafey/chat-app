@@ -9,7 +9,8 @@ const { app, server } = require("./socket/index");
 // const app = express();
 const allowedOrigins = [
   process.env.FRONTEND_URL, // For local development
-  'https://chat-app-02.onrender.com', // New Render frontend
+  'https://your-frontend-url.onrender.com'
+  
 ];
 
 // CORS middleware with dynamic origin matching
