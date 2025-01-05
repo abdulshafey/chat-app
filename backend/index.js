@@ -9,7 +9,7 @@ const { app, server } = require("./socket/index");
 // const app = express();
 const allowedOrigins = [
   process.env.FRONTEND_URL, // For local development
-  'https://your-frontend-url.onrender.com'
+  'https://chat-app-4206.onrender.com'
   
 ];
 
