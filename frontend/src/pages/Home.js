@@ -18,7 +18,7 @@ const Home = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log("user", user);
+  //console.log("user", user);
   const fetchUserDetails = async () => {
     try {
       const URL = `${process.env.REACT_APP_BACKEND_URL}/api/user-details`;
@@ -49,7 +49,9 @@ const Home = () => {
       auth: {
         token: localStorage.getItem("token"),
       },
+      transports:["websocket"]
     });
+
 
     socketConnection.on("onlineUser", (data) => {
       //console.log(data);

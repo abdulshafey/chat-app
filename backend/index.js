@@ -12,20 +12,30 @@ const allowedOrigins = [
   'https://chat-app-coral-mu.vercel.app', // Your Vercel frontend
 ];
 
-// Use dynamic origin matching
+// CORS middleware with dynamic origin matching
 app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
+        console.error(`Blocked by CORS: ${origin}`);
         callback(new Error('Not allowed by CORS'));
       }
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true,
+    credentials: true, // Allows cookies and other credentials
   })
 );
+
+// Handle preflight requests explicitly
+app.options('*', (req, res) => {
+  res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.sendStatus(200);
+});
 
 app.options('*', cors());
 app.use(express.json());
