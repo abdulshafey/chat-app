@@ -49,7 +49,10 @@ const Home = () => {
       auth: {
         token: localStorage.getItem("token"),
       },
-      transports:["websocket"]
+      transports:["websocket"],
+      reconnectionAttempts: 3,  // Allow up to 3 reconnection attempts
+      reconnectionDelay: 1000,  // Delay of 1 second before reconnecting
+      reconnectionDelayMax: 5000, 
     });
 
 
