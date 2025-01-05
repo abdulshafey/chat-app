@@ -11,6 +11,7 @@ const server = http.createServer(app);
 
 const allowedOrigins = [
   process.env.FRONTEND_URL, // Local frontend
+  'https://chat-app-02.onrender.com', // New Render frontend
 ];
 
 const io = new Server(server, {
