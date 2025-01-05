@@ -44,7 +44,7 @@ app.use("/api", router);
 const PORT = process.env.PORT || 8080;
 
 connectToDB().then(() => {
-  server.listen(PORT || 8080, () => {
+  server.listen(PORT, () => {
     console.log("MongoDb connected..");
     console.log(`Server is running on ${PORT}`);
   });
