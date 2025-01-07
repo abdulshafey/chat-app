@@ -9,7 +9,8 @@ const path = require("path");
 
 // const app = express();
 const allowedOrigins = [
-  process.env.FRONTEND_URL, // For local development
+  process.env.FRONTEND_URL, // For local development,
+  "https://chat-app-susg.onrender.com"
   
 ];
 
