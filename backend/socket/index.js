@@ -11,6 +11,7 @@ const server = http.createServer(app);
 
 const allowedOrigins = [
   'https://chat-app-susg.onrender.com', // New Render frontend
+  'wss://chat-app-susg.onrender.com/socket.io/?EIO=4&transport=websocket',
   process.env.FRONTEND_URL, // Local frontend
 ];
 
