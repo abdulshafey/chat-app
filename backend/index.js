@@ -38,17 +38,17 @@ app.options('*', (req, res) => {
   res.sendStatus(200);
 });
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 app.options('*', cors());
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser()); 
 app.use("/api", router);
 
-app.use(express.static(path.join(__dirname, "/frontend/build")));
+// app.use(express.static(path.join(__dirname, "/frontend/build")));
 
-app.get("*", (req, res) => {  
-  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
-});  
+// app.get("*", (req, res) => {  
+//   res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+// });  
 
 
 const PORT = process.env.PORT || 8080;
