@@ -39,7 +39,9 @@ const CheckPassword = () => {
     e.preventDefault();
     e.stopPropagation();
 
-    const URL = `${process.env.REACT_APP_BACKEND_URL}/api/password`;
+   // const URL = `${process.env.REACT_APP_BACKEND_URL}/api/password`;
+    const URL = `/api/password`;
+
 
     try {
       const response = await axios({

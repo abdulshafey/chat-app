@@ -45,7 +45,16 @@ const Home = () => {
 
   /***socket connection */
   useEffect(() => {
-    const socketConnection = io(process.env.REACT_APP_BACKEND_URL, {
+    // const socketConnection = io(process.env.REACT_APP_BACKEND_URL, {
+    //   auth: {
+    //     token: localStorage.getItem("token"),
+    //   },
+    //   transports:["websocket"],
+    //   reconnectionAttempts: 3,  // Allow up to 3 reconnection attempts
+    //   reconnectionDelay: 1000,  // Delay of 1 second before reconnecting
+    //   reconnectionDelayMax: 5000, 
+    // });
+    const socketConnection = io( {
       auth: {
         token: localStorage.getItem("token"),
       },
@@ -54,7 +63,6 @@ const Home = () => {
       reconnectionDelay: 1000,  // Delay of 1 second before reconnecting
       reconnectionDelayMax: 5000, 
     });
-
 
     socketConnection.on("onlineUser", (data) => {
       //console.log(data);

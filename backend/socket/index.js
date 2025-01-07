@@ -10,8 +10,8 @@ const app = express();
 const server = http.createServer(app);
 
 const allowedOrigins = [
-  process.env.FRONTEND_URL, // Local frontend
   'https://chat-app-susg.onrender.com', // New Render frontend
+  process.env.FRONTEND_URL, // Local frontend
 ];
 
 const io = new Server(server, {
