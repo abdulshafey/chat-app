@@ -5,11 +5,11 @@ const router = require("./router/index");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const { app, server } = require("./socket/index");
+const path = require("path");
 
 // const app = express();
 const allowedOrigins = [
   process.env.FRONTEND_URL, // For local development
-  'https://chat-app-4206.onrender.com'
   
 ];
 
@@ -38,10 +38,18 @@ app.options('*', (req, res) => {
   res.sendStatus(200);
 });
 
+const __dirname = path.resolve();
 app.options('*', cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api", router);
+
+app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+app.get("*", (req, res) => {  
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+});  
+
 
 const PORT = process.env.PORT || 8080;
 
